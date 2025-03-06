@@ -1,10 +1,10 @@
 <script setup>
-import ModuleAccordion from './components/ModuleAccordion.vue'
+import DisciplinePage from './pages/DisciplinePage.vue';
 </script>
 
 <template>
   <main>
-    <ModuleAccordion />
+    <DisciplinePage />
   </main>
 </template>
 
