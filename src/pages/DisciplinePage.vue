@@ -7,10 +7,25 @@
         <div class="discipline-breadcrumb__head"> Língua Portuguesa </div>
       </div>
     </header>
+
+    <div v-if="isLoading" class="loading-state">
+      Carregando conteúdo...
+    </div>
+
   </div>
 </template>
 
 <script setup>
+import { computed, onMounted } from 'vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+
+const isLoading = computed(() => store.getters.isLoading);
+
+onMounted(() => {
+  store.dispatch('fetchCategories');
+});
 </script>
 
 <style scoped>
@@ -29,6 +44,7 @@
 .company-logo {
   width: 80px;
   object-fit: contain;
+  margin-bottom: 15px;
 }
 
 .discipline-breadcrumb {
@@ -40,6 +56,7 @@
 .discipline-breadcrumb__tail {
  &::after {
   content: '/';
+  margin-right: 4px;
  }
 }
 
@@ -50,7 +67,10 @@
   text-decoration-color: #A505F0;
 }
 
-.course-title {
-  font-size: 16px
+.loading-state {
+  padding: 20px;
+  text-align: center;
+  font-size: 16px;
+  color: #666;
 }
 </style>
