@@ -18,7 +18,7 @@
       class="section-content"
     >
       <ContentStats :stats="section.stats" />
-      <SectionTabbedContent :section="section" />
+      <SectionTabContent :section="section" />
     </div>
   </div>
 </template>
@@ -27,7 +27,7 @@
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 import ContentStats from './ContentStats.vue';
-import SectionTabbedContent from './SectionTabbedContent.vue';
+import SectionTabContent from './SectionTabContent.vue';
 
 const props = defineProps({
   section: {
