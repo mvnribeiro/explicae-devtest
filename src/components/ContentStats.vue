@@ -1,13 +1,13 @@
 <template>
   <div class="content-info">
     <span class="info-item">
-      Aulas: <b>{{ stats.aulas }} | {{ stats.aulasTime }}</b>
+      Aulas: <b>{{ stats.classes }} | {{ stats.classesTime }}</b>
     </span>
     <span class="info-item">
-      Exercícios: <b>{{ stats.exercicios }} | {{ stats.exerciciosTime }}</b>
+      Exercícios: <b>{{ stats.exercises }} | {{ stats.exercisesTime }}</b>
     </span>
     <span class="info-item">
-      Materiais: <b>{{ stats.materiais }} | {{ stats.materiaisTime }}</b>
+      Materiais: <b>{{ stats.resources }} | {{ stats.resourcesTime }}</b>
     </span>
   </div>
 </template>

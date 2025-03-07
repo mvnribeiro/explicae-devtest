@@ -19,15 +19,6 @@
       v-if="isExpanded"
       class="subcontent-content"
     >
-      <div
-        v-if="subcontent.lessons && subcontent.lessons.length"
-      >
-        <LessonInfo 
-          v-for="lesson in subcontent.lessons" 
-          :key="lesson.id" 
-          :lesson="lesson" 
-        />
-      </div>
 
       <div
         v-if="subcontent.sections"
@@ -46,7 +37,6 @@
 <script setup>
 import { computed } from 'vue';
 import { useStore } from 'vuex';
-import LessonInfo from './LessonInfo.vue';
 import SectionItem from './SectionItem.vue';
 
 const props = defineProps({
@@ -58,11 +48,11 @@ const props = defineProps({
 
 const store = useStore();
 const isExpanded = computed(() => 
-  store.getters.getExpandedSubcontent.includes(props.subcontent.id)
+  store.getters.getExpandedSubcontent(props.subcontent.parentId).includes(props.subcontent.id)
 );
 
 const toggleSubcontent = (id) => {
-  store.dispatch('toggleSubcontent', id);
+  store.dispatch('toggleSubcontent', { contentId: props.subcontent.parentId, subcontentId: id });
 };
 </script>
 
