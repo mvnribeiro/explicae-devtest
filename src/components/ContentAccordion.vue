@@ -18,6 +18,13 @@
       <ContentStats :stats="content.stats" />
     </div>
 
+    <div
+      v-if="isComponentLoading(content.id)"
+      class="loading-state"
+    >
+      Carregando conteúdo...
+    </div>
+
     <div v-if="isExpanded">
       <SubcontentItem 
         v-for="subcontent in content.subcontent" 
@@ -44,6 +51,7 @@ const props = defineProps({
 const store = useStore();
 
 const content = computed(() => store.getters.getContentById(props.contentId));
+const isComponentLoading = (id) => store.getters.isComponentLoading(id);
 const isExpanded = computed(() => 
   store.getters.getExpandedCategories.includes(props.contentId)
 );
@@ -83,4 +91,16 @@ const toggleContent = (id) => {
 .subcontent {
   padding: 10px 15px;
 }
+
+.loading-state {
+  padding: 8px 12px;
+  margin: 10px 15px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #555;
+  background-color: #f5f5f5;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
 </style>
