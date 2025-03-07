@@ -7,15 +7,20 @@
       @click="toggleContent(content.id)"
       class="content-header"
     >
-      <div class="content-title">
-        <span class="number">
-          {{ content.id }}.
-        </span> 
-        <span>
-          {{ content.title }}
-        </span>
+      <div class="content-wrapper">
+        <div class="content-title">
+          <span class="number">
+            {{ content.id }}.
+          </span> 
+          <span>
+            {{ content.title }}
+          </span>
+        </div>
+        <ContentStats :stats="content.stats" />
       </div>
-      <ContentStats :stats="content.stats" />
+      <div class="chevron">
+        {{ isExpanded ? '▲' : '▼' }}
+      </div>
     </div>
 
     <div
@@ -71,7 +76,7 @@ const toggleContent = (id) => {
 
 .content-header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   padding: 10px 15px;
   cursor: pointer;

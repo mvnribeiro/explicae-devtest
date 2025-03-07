@@ -2,7 +2,7 @@
   <div class="tab-pane">
     <div class="content-header">
       <span class="time-total">
-        {{ formatTime(contents.totalTime) || '0min' }}
+        {{ contents.items?.length }} {{ label }} | {{ formatTime(contents.totalTime) || '0min' }}
       </span>
     </div>
     <div class="content-items">
@@ -44,6 +44,10 @@ defineProps({
     type: String,
     required: true
   },
+  label: {
+    type: String,
+    required: true
+  }
 });
 
 defineEmits(['update:item']);

@@ -17,18 +17,21 @@
         v-if="activeTab === 'classes'"
         :contents="section.classes"
         tab-id="classes"
+        label="Aulas"
       />
       
       <tab-content-pane 
         v-else-if="activeTab === 'exercises'"
         :contents="section.exercises"
         tab-id="exercises"
+        label="Exercícios"
       />
       
       <tab-content-pane 
         v-else-if="activeTab === 'resources'"
         :contents="section.resources"
         tab-id="resources"
+        label="Materiais"
       />
     </div>
   </div>
