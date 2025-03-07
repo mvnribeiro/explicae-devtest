@@ -1,18 +1,28 @@
 <template>
   <div class="tab-pane">
     <div class="content-header">
-      <span class="time-total">{{ contents.totalTime || '0min' }}</span>
+      <span class="time-total">
+        {{ formatTime(contents.totalTime) || '0min' }}
+      </span>
     </div>
     <div class="content-items">
       <div v-if="contents.items?.length > 0" class="content-list">
-        <div v-for="(item, index) in contents.items" :key="index" class="content-item">
+        <div
+          v-for="(item, index) in contents.items"
+          :key="index"
+          class="content-item"
+        >
           <input 
             type="checkbox" 
             :id="`${tabId}-${index}`" 
             :checked="item.completed"
           >
-          <label :for="`${tabId}-${index}`">{{ item.title }}</label>
-          <span class="item-time">{{ item.time }}</span>
+          <label :for="`${tabId}-${index}`">
+            {{ item.title }}
+          </label>
+          <span class="item-time">
+            {{ formatTime(item.time) }}
+          </span>
         </div>
       </div>
       <div v-else class="empty-state">
@@ -23,6 +33,8 @@
 </template>
 
 <script setup>
+import formatTime from '../utils/formatTime.js';
+
 defineProps({
   contents: {
     type: Object,

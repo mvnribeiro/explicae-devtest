@@ -5,11 +5,11 @@ const mockData = {
       title: 'Interpretação de Textos',
       stats: {
         classes: 4,
-        classesTime: 10200,
+        classesTime: 20842,
         exercises: 4,
-        exercisesTime: 5700,
+        exercisesTime: 18435,
         resources: 4,
-        resourcesTime: 3300
+        resourcesTime: 4294
       }
     },
     {
@@ -17,11 +17,11 @@ const mockData = {
       title: 'Gramática',
       stats: {
         classes: 6,
-        classesTime: 6929,
+        classesTime: 36539,
         exercises: 5,
-        exercisesTime: 2729,
+        exercisesTime: 28053,
         resources: 4,
-        resourcesTime: 10980
+        resourcesTime: 11899
       }
     }
   ]
@@ -41,45 +41,37 @@ export function fetchSubcontent(contentId) {
       {
         id: 'comp01',
         title: 'Competência 01: Palavras, Imagem e Vida Social',
-        stats: {
-          classes: 100,
-          classesTime: 5400,
-          exercises: 20,
-          exercisesTime: 2700,
-          resources: 5,
-          resourcesTime: 1800
-        },
         sections: [
           {
             id: 'analisecompreensao',
             title: 'A. Análise e Compreensão',
             stats: {
-              classes: 100,
-              classesTime: 5400,
-              exercises: 20,
-              exercisesTime: 2700,
-              resources: 5,
-              resourcesTime: 1800
+              classes: 2,
+              classesTime: 13509,
+              exercises: 2,
+              exercisesTime: 12547,
+              resources: 2,
+              resourcesTime: 2007
             },
             classes: {
-              totalTime: 5400,
+              totalTime: 13059,
               items: [
-                { title: 'Leitura Crítica', time: 2700, completed: false },
-                { title: 'Interpretação de Texto', time: 2700, completed: false }
+                { title: 'Leitura Crítica', time: 5296, completed: false },
+                { title: 'Interpretação de Texto', time: 7863, completed: false }
               ]
             },
             exercises: {
-              totalTime: 2700,
+              totalTime: 12547,
               items: [
-                { id: 'ex1', title: 'Exercício de Interpretação I', time: 1200 },
-                { id: 'ex2', title: 'Exercício de Interpretação II', time: 1500 }
+                { id: 'ex1', title: 'Exercício de Interpretação I', time: 8793 },
+                { id: 'ex2', title: 'Exercício de Interpretação II', time: 3754 }
               ]
             },
             resources: {
-              totalTime: 1800,
+              totalTime: 2007,
               items: [
-                { id: 'mat1', title: 'Material de Apoio I', time: 900 },
-                { id: 'mat2', title: 'Material de Apoio II', time: 900 }
+                { id: 'mat1', title: 'Material de Apoio I', time: 1377 },
+                { id: 'mat2', title: 'Material de Apoio II', time: 930 }
               ]
             }
           }
@@ -88,45 +80,37 @@ export function fetchSubcontent(contentId) {
       {
         id: 'comp06',
         title: 'Competência 06: Texto - Contexto e Função',
-        stats: {
-          classes: 80,
-          classesTime: 4800,
-          exercises: 25,
-          exercisesTime: 3000,
-          resources: 4,
-          resourcesTime: 1500
-        },
         sections: [
           {
             id: 'contextualizacao',
             title: 'A. Interpretação de Contextos',
             stats: {
-              classes: 80,
-              classesTime: 4800,
-              exercises: 25,
-              exercisesTime: 3000,
-              resources: 4,
-              resourcesTime: 1500
+              classes: 2,
+              classesTime: 8233,
+              exercises: 2,
+              exercisesTime: 7088,
+              resources: 2,
+              resourcesTime: 2297
             },
             classes: {
-              totalTime: 4800,
+              totalTime: 8233,
               items: [
-                { title: 'Contextualização de Texto', time: 2400, completed: false },
-                { title: 'Análise de Função Textual', time: 2400, completed: false }
+                { title: 'Contextualização de Texto', time: 1685, completed: false },
+                { title: 'Análise de Função Textual', time: 6548, completed: false }
               ]
             },
             exercises: {
-              totalTime: 3000,
+              totalTime: 7088,
               items: [
-                { id: 'ex3', title: 'Exercício de Contexto I', time: 1500 },
-                { id: 'ex4', title: 'Exercício de Contexto II', time: 1500 }
+                { id: 'ex3', title: 'Exercício de Contexto I', time: 4545 },
+                { id: 'ex4', title: 'Exercício de Contexto II', time: 2533 }
               ]
             },
             resources: {
-              totalTime: 1500,
+              totalTime: 2297,
               items: [
-                { id: 'mat3', title: 'Material de Apoio III', time: 900 },
-                { id: 'mat4', title: 'Material de Apoio IV', time: 600 }
+                { id: 'mat3', title: 'Material de Apoio III', time: 1620 },
+                { id: 'mat4', title: 'Material de Apoio IV', time: 867 }
               ]
             }
           }
@@ -137,24 +121,16 @@ export function fetchSubcontent(contentId) {
       {
         id: 'fonologia',
         title: '2.1 Fonologia',
-        stats: {
-          classes: 50,
-          classesTime: 3600,
-          exercises: 30,
-          exercisesTime: 2400,
-          resources: 10,
-          resourcesTime: 1200
-        },
         sections: [
           {
             id: 'fundamentosfonologia',
             title: 'A. Fundamentos da Fonologia',
             stats: {
-              classes: 50,
+              classes: 2,
               classesTime: 3600,
-              exercises: 30,
+              exercises: 2,
               exercisesTime: 2400,
-              resources: 10,
+              resources: 2,
               resourcesTime: 1200
             },
             classes: {
@@ -184,48 +160,40 @@ export function fetchSubcontent(contentId) {
       {
         id: 'morfologia',
         title: '2.2 Morfologia',
-        stats: {
-          classes: 94,
-          classesTime: 3300,
-          exercises: 60,
-          exercisesTime: 225900,
-          resources: 1,
-          resourcesTime: 2880
-        },
         sections: [
           {
             id: 'estrutura',
             title: 'A. Estrutura e Formação das Palavras',
             stats: {
-              classes: 94,
-              classesTime: 3300,
-              exercises: 60,
-              exercisesTime: 225900,
-              resources: 1,
-              resourcesTime: 2880
+              classes: 4,
+              classesTime: 32939,
+              exercises: 3,
+              exercisesTime: 25653,
+              resources: 2,
+              resourcesTime: 10699
             },
             classes: {
-              totalTime: 329,
+              totalTime: 32939,
               items: [
-                { title: 'Estrutura e Formação da Palavra I', time: 840, completed: false },
-                { title: 'Estrutura e Formação da Palavra II', time: 859, completed: false },
-                { title: 'Estrutura e Formação da Palavra III', time: 914, completed: true },
-                { title: 'Estrutura e Formação das Palavras IV: Um Passeio no Caminho', time: 716, completed: false }
+                { title: 'Estrutura e Formação da Palavra I', time: 8400, completed: false },
+                { title: 'Estrutura e Formação da Palavra II', time: 8509, completed: false },
+                { title: 'Estrutura e Formação da Palavra III', time: 9014, completed: true },
+                { title: 'Estrutura e Formação das Palavras IV', time: 7016, completed: false }
               ]
             },
             exercises: {
-              totalTime: 329,
+              totalTime: 25653,
               items: [
-                { id: 'exercicio1', title: 'Exercício 1: Estrutura e Formação da Palavra I', time: 840 },
-                { id: 'exercicio2', title: 'Exercício 2: Estrutura e Formação da Palavra II', time: 859 },
-                { id: 'exercicio3', title: 'Exercício 3: Estrutura e Formação da Palavra III', time: 914 }
+                { id: 'exercicio1', title: 'Exercício 1: Estrutura e Formação da Palavra I', time: 8040 },
+                { id: 'exercicio2', title: 'Exercício 2: Estrutura e Formação da Palavra II', time: 8509 },
+                { id: 'exercicio3', title: 'Exercício 3: Estrutura e Formação da Palavra III', time: 9104 }
               ]
             },
             resources: {
-              totalTime: 9780,
+              totalTime: 10699,
               items: [
-                { id: 'material1', title: 'Material 1: Estrutura e Formação da Palavra I', time: 840 },
-                { id: 'material2', title: 'Material 2: Estrutura e Formação da Palavra II', time: 859 }
+                { id: 'material1', title: 'Material 1: Estrutura e Formação da Palavra I', time: 5840 },
+                { id: 'material2', title: 'Material 2: Estrutura e Formação da Palavra II', time: 4859 }
               ]
             }
           }

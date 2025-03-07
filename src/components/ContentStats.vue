@@ -1,18 +1,20 @@
 <template>
   <div class="content-info">
     <span class="info-item">
-      Aulas: <b>{{ stats.classes }} | {{ stats.classesTime }}</b>
+      Aulas: <b>{{ stats.classes }} | {{ formatTime(stats.classesTime) }}</b>
     </span>
     <span class="info-item">
-      Exercícios: <b>{{ stats.exercises }} | {{ stats.exercisesTime }}</b>
+      Exercícios: <b>{{ stats.exercises }} | {{ formatTime(stats.exercisesTime) }}</b>
     </span>
     <span class="info-item">
-      Materiais: <b>{{ stats.resources }} | {{ stats.resourcesTime }}</b>
+      Materiais: <b>{{ stats.resources }} | {{ formatTime(stats.resourcesTime) }}</b>
     </span>
   </div>
 </template>
 
 <script setup>
+import formatTime from '../utils/formatTime.js';
+
 defineProps({
   stats: {
     type: Object,
