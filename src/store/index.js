@@ -170,25 +170,43 @@ export default createStore({
                     { title: 'Estrutura e Formação das Palavras IV: Um Passeio no Caminho', time: '00:11:56', completed: false }
                   ]
                 },
-                exercises: [
-                  {
-                    id: 'exercicio1',
-                    title: 'Exercício 1: Estrutura e Formação da Palavra I',
-                    time: '00:14:00'
-                  },
-                  {
-                    id: 'exercicio2',
-                    title: 'Exercício 2: Estrutura e Formação da Palavra II',
-                    time: '00:14:19'
-                  },
-                  {
-                    id: 'exercicio3',
-                    title: 'Exercício 3: Estrutura e Formação da Palavra III',
-                    time: '00:15:14'
-                  },
-                ],
-              }
-            ]
+                exercises: {
+                  totalTime: '00:05:29',
+                  items: [
+                    {
+                      id: 'exercicio1',
+                      title: 'Exercício 1: Estrutura e Formação da Palavra I',
+                      time: '00:14:00'
+                    },
+                    {
+                      id: 'exercicio2',
+                      title: 'Exercício 2: Estrutura e Formação da Palavra II',
+                      time: '00:14:19'
+                    },
+                    {
+                      id: 'exercicio3',
+                      title: 'Exercício 3: Estrutura e Formação da Palavra III',
+                      time: '00:15:14'
+                    },
+                  ]
+                },
+                resources: {
+                  totalTime: '02:43:00',
+                  items: [
+                    {
+                      id: 'material1',
+                      title: 'Material 1: Estrutura e Formação da Palavra I',
+                      time: '00:14:00'
+                    },
+                    {
+                      id: 'material2',
+                      title: 'Material 2: Estrutura e Formação da Palavra II',
+                      time: '00:14:19'
+                    },
+                  ],
+                },
+              },
+            ],
           },
         ]
       };

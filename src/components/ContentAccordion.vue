@@ -17,6 +17,14 @@
       </div>
       <ContentStats :stats="content.stats" />
     </div>
+
+    <div v-if="isExpanded">
+      <SubcontentItem 
+        v-for="subcontent in content.subcontent" 
+        :key="subcontent.id"
+        :subcontent="subcontent"
+      />
+    </div>
   </div>
 </template>
 
@@ -24,6 +32,7 @@
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 import ContentStats from './ContentStats.vue';
+import SubcontentItem from './SubcontentItem.vue';
 
 const props = defineProps({
   contentId: {
@@ -35,6 +44,9 @@ const props = defineProps({
 const store = useStore();
 
 const content = computed(() => store.getters.getContentById(props.contentId));
+const isExpanded = computed(() => 
+  store.getters.getExpandedCategories.includes(props.contentId)
+);
 
 const toggleContent = (id) => {
   store.dispatch('toggleContent', id);
