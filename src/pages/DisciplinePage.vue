@@ -1,10 +1,18 @@
 <template>
   <div class="discipline-page">
     <header class="discipline-header">
-      <img src="@/assets/explicae.png" alt="Logo Explicaê" class="company-logo" />
+      <img
+        src="@/assets/explicae.png"
+        alt="Logo Explicaê"
+        class="company-logo"
+      />
       <div class="discipline-breadcrumb">
-        <div class="discipline-breadcrumb__tail"> Cadernos </div>
-        <div class="discipline-breadcrumb__head"> Língua Portuguesa </div>
+        <div class="discipline-breadcrumb__tail">
+          Cadernos
+        </div>
+        <div class="discipline-breadcrumb__head">
+          Língua Portuguesa
+        </div>
       </div>
     </header>
 
@@ -12,15 +20,24 @@
       Carregando conteúdo...
     </div>
 
+    <div v-else class="content-container">
+      <ContentAccordion 
+        v-for="cont in content" 
+        :key="cont.id" 
+        :contentId="cont.id" 
+      />
+    </div>
   </div>
 </template>
 
 <script setup>
 import { computed, onMounted } from 'vue';
 import { useStore } from 'vuex';
+import ContentAccordion from '@/components/ContentAccordion.vue';
 
 const store = useStore();
 
+const content = computed(() => store.getters.getCategories);
 const isLoading = computed(() => store.getters.isLoading);
 
 onMounted(() => {
@@ -72,5 +89,11 @@ onMounted(() => {
   text-align: center;
   font-size: 16px;
   color: #666;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 </style>
