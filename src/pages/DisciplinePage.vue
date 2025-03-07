@@ -37,11 +37,11 @@ import ContentAccordion from '@/components/ContentAccordion.vue';
 
 const store = useStore();
 
-const content = computed(() => store.getters.getCategories);
+const content = computed(() => store.getters.getContent);
 const isLoading = computed(() => store.getters.isLoading);
 
 onMounted(() => {
-  store.dispatch('fetchCategories');
+  store.dispatch('fetchContent');
 });
 </script>
 

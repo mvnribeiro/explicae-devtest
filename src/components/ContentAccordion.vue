@@ -53,7 +53,7 @@ const store = useStore();
 const content = computed(() => store.getters.getContentById(props.contentId));
 const isComponentLoading = (id) => store.getters.isComponentLoading(id);
 const isExpanded = computed(() => 
-  store.getters.getExpandedCategories.includes(props.contentId)
+  store.getters.getExpandedContent.includes(props.contentId)
 );
 
 const toggleContent = (id) => {

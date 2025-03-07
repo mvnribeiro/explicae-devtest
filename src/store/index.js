@@ -1,30 +1,32 @@
 import { createStore } from 'vuex';
-import { fetchCategories, fetchSubcontent } from '@/services/mockApiService';
+import { fetchContent, fetchSubcontent } from '@/services/mockApiService';
 
 export default createStore({
   state: {
     content: [],
     loading: false,
     componentLoading: {},
-    expandedCategories: [],
-    expandedSubcontent: [],
+    expandedContent: [],
+    expandedSubcontent: {},
     expandedSections: []
   },
   getters: {
-    getCategories: (state) => state.content,
+    getContent: (state) => state.content,
     isLoading: (state) => state.loading,
     isComponentLoading: (state) => (contentId) => {
       return state.componentLoading[contentId] || false;
     },
-    getExpandedCategories: (state) => state.expandedCategories,
-    getExpandedSubcontent: (state) => state.expandedSubcontent,
+    getExpandedContent: (state) => state.expandedContent,
+    getExpandedSubcontent: (state) => (contentId) => {
+      return state.expandedSubcontent[contentId] || [];
+    },
     getExpandedSections: (state) => state.expandedSections,
     getContentById: (state) => (id) => {
       return state.content.find(content => content.id === id);
     }
   },
   mutations: {
-    SET_CATEGORIES(state, content) {
+    SET_CONTENT(state, content) {
       state.content = content;
     },
     SET_LOADING(state, status) {
@@ -35,27 +37,32 @@ export default createStore({
         ...state.componentLoading, [contentId]: status
       };
     },
-    UPDATE_CATEGORY_SUBCATEGORIES(state, { contentId, subcontent }) {
-      const contentIndex = state.content.findIndex(cat => cat.id === contentId);
+    UPDATE_CONTENT_SUBCONTENT(state, { contentId, subcontent }) {
+      const contentIndex = state.content.findIndex(cont => cont.id === contentId);
       if (contentIndex !== -1) {
         state.content[contentIndex].subcontent = subcontent;
       }
     },
-    TOGGLE_CATEGORY(state, contentId) {
-      if (state.expandedCategories.includes(contentId)) {
-        state.expandedCategories = state.expandedCategories.filter(id => id !== contentId);
+    TOGGLE_CONTENT(state, contentId) {
+      if (state.expandedContent.includes(contentId)) {
+        state.expandedContent = state.expandedContent.filter(id => id !== contentId);
       } else {
-        state.expandedCategories.push(contentId);
+        state.expandedContent.push(contentId);
       }
     },
-    TOGGLE_SUBCATEGORY(state, subcontentId) {
-      if (state.expandedSubcontent.includes(subcontentId)) {
-        state.expandedSubcontent = state.expandedSubcontent.filter(id => id !== subcontentId);
+    TOGGLE_SUBCONTENT(state, { contentId, subcontentId }) {
+      if (!state.expandedSubcontent[contentId]) {
+        state.expandedSubcontent[contentId] = [];
+      }
+    
+      if (state.expandedSubcontent[contentId].includes(subcontentId)) {
+        state.expandedSubcontent[contentId] = state.expandedSubcontent[contentId].filter(id => id !== subcontentId);
       } else {
-        state.expandedSubcontent.push(subcontentId);
+        state.expandedSubcontent[contentId].push(subcontentId);
       }
     },
     TOGGLE_SECTION(state, sectionId) {
+      console.log(sectionId);
       if (state.expandedSections.includes(sectionId)) {
         state.expandedSections = state.expandedSections.filter(id => id !== sectionId);
       } else {
@@ -64,11 +71,11 @@ export default createStore({
     }
   },
   actions: {
-    async fetchCategories({ commit }) {
+    async fetchContent({ commit }) {
       commit('SET_LOADING', true);
       try {
-        const response = await fetchCategories();
-        commit('SET_CATEGORIES', response);
+        const response = await fetchContent();
+        commit('SET_CONTENT', response);
       } catch (error) {
         console.error('Error fetching content:', error);
       } finally {
@@ -80,7 +87,7 @@ export default createStore({
       commit('SET_COMPONENT_LOADING', { contentId, status: true });
       try {
         const response = await fetchSubcontent(contentId);
-        commit('UPDATE_CATEGORY_SUBCATEGORIES', { contentId, subcontent: response });
+        commit('UPDATE_CONTENT_SUBCONTENT', { contentId, subcontent: response });
       } catch (error) {
         console.error(`Error fetching subcontent for content ${contentId}:`, error);
       } finally {
@@ -89,17 +96,17 @@ export default createStore({
     },
 
     toggleContent({ commit, dispatch, state }, contentId) {
-      commit('TOGGLE_CATEGORY', contentId);
-      const isExpanded = state.expandedCategories.includes(contentId);
-      const category = state.content.find(cat => cat.id === contentId);
+      commit('TOGGLE_CONTENT', contentId);
+      const isExpanded = state.expandedContent.includes(contentId);
+      const content = state.content.find(cont => cont.id === contentId);
 
-      if (isExpanded && category && (!category.subcontent || category.subcontent.length === 0)) {
+      if (isExpanded && content && (!content.subcontent || content.subcontent.length === 0)) {
         dispatch('fetchSubcontent', contentId);
       }
     },
 
-    toggleSubcontent({ commit }, subcontentId) {
-      commit('TOGGLE_SUBCATEGORY', subcontentId);
+    toggleSubcontent({ commit }, { contentId, subcontentId }) {
+      commit('TOGGLE_SUBCONTENT', { contentId, subcontentId });
     },
 
     toggleSection({ commit }, sectionId) {
